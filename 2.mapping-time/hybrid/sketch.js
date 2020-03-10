@@ -40,50 +40,92 @@ function draw() {
   var dayPoint = pointAt(x,y,dayAngle,dayLength)
   circle(dayPoint.x,dayPoint.y,15)
 
-  let a = 300, b = 300
-  let minLength = 20
+  let a = 250, b = 270
+  let minLength = 150
 
   _.times(60, n => {
-  	var minAngle = map(n,0,59,0,360)
+  	var minAngle = map(n,0,60,0,360)
   	var minPoint = pointAt(a,b,minAngle,minLength)
+  	print(minPoint)
+  	// noLoop()
   	if(n<now.min){
-  	  stroke('white')
-  	  line(a,b,minPoint.a,minPoint.b)
+  	  stroke(255,150)
+  	  strokeWeight(2)
+  	  line(a,b,minPoint.x,minPoint.y)
 
   	  fill(255)
-	circle(a, b, 5)
+	circle(a, b, 10)
 
   	}
+  })
 
-  let c = 400, d = 500
-  let minLength = 40
+  let c = 320, d = 450
+  let hourLength = 100
 
   _.times(12, h => {
-  	var hourAngle = map(h,1,12,0,360)
-  	var hourPoint = pointAt(a,b,hourAngle,hourLength)
+  	var hourAngle = map(h,0,12,0,360)
+  	var hourPoint = pointAt(c,d,hourAngle,hourLength)
+  	print(hourPoint)
+  	// noLoop()
   	if(h<now.hour){
-  	  stroke('white')
-  	  line(a,b,hourPoint.a,hourPoint.b)
+  	  stroke(255,100)
+  	  strokeWeight(5)
+  	  line(c,d,hourPoint.x,hourPoint.y)
 
-  	  fill(255,0,0)
-	circle(a, b, 5)
-    }
+  	  fill(color)
+  	  noStroke()
+	circle(c, d, 20)
 
-let e = 500, f = 100
-  let secLength = 30
+  	}
+  })
+
+let e = 400, f = 200
+  let secLength = 200
 
   _.times(60, s => {
   	var secAngle = map(s,0,60,0,360)
-  	var secPoint = pointAt(a,b,secAngle,secLength)
+  	var secPoint = pointAt(e,f,secAngle,secLength)
+  	print(secPoint)
+  	// noLoop()
   	if(s<now.sec){
-  	  stroke('white')
-  	  line(a,b,secPoint.a,secPoint.b)
+  	  stroke(255,40)
+  	  strokeWeight(3)
+  	  line(e,f,secPoint.x,secPoint.y)
 
-  	  fill(0,0,255)
-	circle(a, b, 5)
-    }
+  	  fill(255)
+	circle(e, f, 5)
+
+  	}
+  })
+//   let c = 400, d = 500
+//   let minLength = 40
+
+//   _.times(12, h => {
+//   	var hourAngle = map(h,1,12,0,360)
+//   	var hourPoint = pointAt(a,b,hourAngle,hourLength)
+//   	if(h<now.hour){
+//   	  stroke('white')
+//   	  line(a,b,hourPoint.a,hourPoint.b)
+
+//   	  fill(255,0,0)
+// 	circle(a, b, 5)
+//     }
+
+// let e = 500, f = 100
+//   let secLength = 30
+
+//   _.times(60, s => {
+//   	var secAngle = map(s,0,60,0,360)
+//   	var secPoint = pointAt(a,b,secAngle,secLength)
+//   	if(s<now.sec){
+//   	  stroke('white')
+//   	  line(a,b,secPoint.a,secPoint.b)
+
+//   	  fill(0,0,255)
+// 	circle(a, b, 5)
+//     }
 
 
   	
-})
+// })
 }
