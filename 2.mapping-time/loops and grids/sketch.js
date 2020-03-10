@@ -9,6 +9,11 @@
 // - use lerpColor for a gradient in each row of dots
 // - use lerpColor for a gradient that runs from cell 1–60
 // 
+function pointAt(cx, cy, angle, dist){
+  var theta = angle/360 * TWO_PI
+  return {x:cx+cos(theta) * dist, 
+          y:cy+sin(theta) * dist}
+}
 
 function setup() {
   createCanvas(600, 600)
@@ -46,8 +51,8 @@ function draw(){
    
       if (cellNumber < now.sec){
         // circle(x, y, cellRadius)
-        text(cellNumber,x,y)
-        
+        // text(cellNumber,x,y)
+
       }else if (cellNumber < totalCells){
         circle(x, y, 4)
       }
