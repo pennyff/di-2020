@@ -13,10 +13,17 @@ function draw() {
 
 	var season = now.season
 	var color
-	if(season == 1) color = "green"
-	if(season == 2) color = "yellow"
-	if(season == 3) color = "orange"
-	if(season == 4) color = "blue"
+	if(season == 1) {color = "green"}
+	if(season == 2) {color = "yellow"}
+	if(season == 3) {color = "orange"}
+	if(season == 4) {color = "blue"}
+
+	let petalOrigin
+	if(now.am){
+	  petalOrigin = "pink"
+	}else{
+	  petalOrigin = "blue"
+	}
 
 	
 	background("black");
@@ -39,6 +46,26 @@ function draw() {
   var dayLength = now.progress.month*branchLength
   var dayPoint = pointAt(x,y,dayAngle,dayLength)
   circle(dayPoint.x,dayPoint.y,15)
+  
+  let c = 320, d = 450
+  let hourLength = 80
+
+  _.times(12, h => {
+  	var hourAngle = map(h,0,12,0,360)
+  	var hourPoint = pointAt(c,d,hourAngle,hourLength)
+  	print(hourPoint)
+  	// noLoop()
+  	if(h<now.hour){
+  	  stroke(255,100)
+  	  strokeWeight(8)
+  	  line(c,d,hourPoint.x,hourPoint.y)
+
+  	  fill(petalOrigin)
+  	  noStroke()
+	circle(c, d, 20)
+
+  	}
+  })
 
   let a = 250, b = 270
   let minLength = 150
@@ -59,25 +86,7 @@ function draw() {
   	}
   })
 
-  let c = 320, d = 450
-  let hourLength = 100
 
-  _.times(12, h => {
-  	var hourAngle = map(h,0,12,0,360)
-  	var hourPoint = pointAt(c,d,hourAngle,hourLength)
-  	print(hourPoint)
-  	// noLoop()
-  	if(h<now.hour){
-  	  stroke(255,100)
-  	  strokeWeight(5)
-  	  line(c,d,hourPoint.x,hourPoint.y)
-
-  	  fill(color)
-  	  noStroke()
-	circle(c, d, 20)
-
-  	}
-  })
 
 let e = 400, f = 200
   let secLength = 200
